@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kỷ Niệm Bạn Bè ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(to bottom,#000000,#1b1b2f);
+    font-family:Arial, sans-serif;
+    position:relative;
+}
+
+/* sao lấp lánh */
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    animation:blink 2s infinite;
+}
+
+@keyframes blink{
+    0%{
+        opacity:0;
+        transform:scale(0);
+    }
+    50%{
+        opacity:1;
+        transform:scale(2);
+    }
+    100%{
+        opacity:0;
+        transform:scale(0);
+    }
+}
+
+/* trái tim */
+.heart-container{
+    position:relative;
+    width:420px;
+    height:420px;
+    transform:rotate(-45deg);
+    animation:beat 1.5s infinite;
+}
+
+.heart{
+    position:absolute;
+    width:420px;
+    height:420px;
+    background:#ff3366;
+    box-shadow:
+        0 0 30px #ff6699,
+        0 0 60px #ff6699,
+        0 0 90px #ff6699;
+}
+
+.heart::before,
+.heart::after{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:420px;
+    background:#ff3366;
+    border-radius:50%;
+}
+
+.heart::before{
+    top:-210px;
+    left:0;
+}
+
+.heart::after{
+    left:210px;
+    top:0;
+}
+
+@keyframes beat{
+    0%{
+        transform:rotate(-45deg) scale(1);
+    }
+
+    50%{
+        transform:rotate(-45deg) scale(1.08);
+    }
+
+    100%{
+        transform:rotate(-45deg) scale(1);
+    }
+}
+
+/* ảnh */
+.photo{
+    position:absolute;
+    width:120px;
+    height:120px;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid white;
+    top:70px;
+    left:150px;
+    transform:rotate(45deg);
+    z-index:10;
+    box-shadow:0 0 25px white;
+}
+
+/* chữ */
+.text{
+    position:absolute;
+    width:75%;
+    top:55%;
+    left:50%;
+    transform:translate(-50%,-50%) rotate(45deg);
+    color:white;
+    text-align:center;
+    line-height:1.7;
+    font-size:15px;
+    font-weight:bold;
+    z-index:20;
+    text-shadow:0 0 10px white;
+    animation:fadeIn 3s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translate(-50%,-50%) rotate(45deg) scale(0.5);
+    }
+
+    to{
+        opacity:1;
+        transform:translate(-50%,-50%) rotate(45deg) scale(1);
+    }
+}
+
+/* trái tim bay */
+.floating-heart{
+    position:absolute;
+    color:#ff6699;
+    font-size:20px;
+    animation:float 6s linear infinite;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(100vh) scale(0);
+        opacity:0;
+    }
+
+    30%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-120vh) scale(1.5);
+        opacity:0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NHẠC -->
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<!-- TRÁI TIM -->
+<div class="heart-container">
+
+    <div class="heart"></div>
+
+    <!-- ẢNH --> 
+    <img src="friends.jpg" class="photo">
+
+    <!-- LỜI NHẮN -->
+    <div class="text">
+
+        Tôi yêu tất cả các bạn và tôi rất trân trọng khoảng thời gian mà các bạn dành cho tôi tại trường tiếng này.<br><br>
+
+        Và nếu sau này dù cho ai có đi đâu, học đại học hay học senmon đi chăng nữa thì hãy nhớ về nhau, về những kỉ niệm mà ta đang có hiện tại nha ❤️<br><br>
+
+        🌸 Tôi yêu tất cả các bạn 🌸
+
+    </div>
+
+</div>
+
+<script>
+
+/* sao lấp lánh */
+for(let i=0;i<100;i++){
+
+    let star=document.createElement("div");
+
+    star.classList.add("star");
+
+    star.style.left=Math.random()*window.innerWidth+"px";
+
+    star.style.top=Math.random()*window.innerHeight+"px";
+
+    star.style.animationDelay=Math.random()*3+"s";
+
+    document.body.appendChild(star);
+}
+
+/* trái tim bay */
+setInterval(()=>{
+
+    let heart=document.createElement("div");
+
+    heart.classList.add("floating-heart");
+
+    heart.innerHTML="❤️";
+
+    heart.style.left=Math.random()*window.innerWidth+"px";
+
+    heart.style.fontSize=(Math.random()*20+15)+"px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+
+},300);
+
+</script>
+
+</body>
+</html>
